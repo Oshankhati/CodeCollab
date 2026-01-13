@@ -1,0 +1,13 @@
+import mongoose from "mongoose";
+
+const workspaceSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    members: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    invites: [{ type: String }]
+  },
+  { timestamps: true }
+);
+
+export default mongoose.model("Workspace", workspaceSchema);
