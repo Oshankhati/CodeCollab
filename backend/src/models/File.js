@@ -4,9 +4,13 @@ const fileSchema = new mongoose.Schema(
   {
     workspace: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Workspace"
+      ref: "Workspace",
+      required: true
     },
-    name: String,
+    name: {
+      type: String,
+      required: true
+    },
     type: {
       type: String,
       enum: ["file", "folder"],

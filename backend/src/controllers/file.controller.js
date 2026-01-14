@@ -28,3 +28,9 @@ export const deleteFile = async (req, res) => {
   await File.findByIdAndDelete(req.params.id);
   res.json({ message: "Deleted" });
 };
+
+
+export const getFile = async (req, res) => {
+  const file = await File.findById(req.params.id);
+  res.json(file);
+};

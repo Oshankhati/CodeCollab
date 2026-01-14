@@ -4,9 +4,9 @@ import { MONGO_URI } from "./env.js";
 const connectDB = async () => {
   try {
     await mongoose.connect(MONGO_URI);
-    console.log("MongoDB Connected");
+    console.log("✅ Connected to MongoDB Atlas");
   } catch (err) {
-    console.error(err.message);
+    console.error("❌ MongoDB connection error:",err.message);
     process.exit(1);
   }
 };
