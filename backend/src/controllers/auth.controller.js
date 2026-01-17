@@ -40,9 +40,16 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
     }
 
-    const token = jwt.sign({ id: user._id }, JWT_SECRET, {
-      expiresIn: "1d"
-    });
+   const token = jwt.sign(
+  {
+    id: user._id,
+    email: user.email,   // 🔴 REQUIRED FOR INVITES
+    name: user.name,
+  },
+  process.env.JWT_SECRET,
+  { expiresIn: "1d" }
+);
+
 
     res.json({
       token,

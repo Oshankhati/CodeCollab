@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../api/auth.api";
-import { useAuth } from "../context/AuthContext";
+import { registerUser } from "../api/auth.api";
 
-export default function Login() {
+export default function Register() {
   const navigate = useNavigate();
-  const { login } = useAuth();
 
   const [form, setForm] = useState({
+    name: "",
     email: "",
     password: "",
   });
@@ -18,19 +17,26 @@ export default function Login() {
   const submit = async (e) => {
     e.preventDefault();
     try {
-      const res = await loginUser(form);
-      login(res.data);
-      navigate("/dashboard");
+      await registerUser(form);
+      alert("Registered successfully. Please login.");
+      navigate("/login");
     } catch (err) {
-      alert(err.response?.data?.message || "Login failed");
+      alert(err.response?.data?.message || "Registration failed");
     }
   };
 
   return (
     <div style={container}>
-      <h2>Login</h2>
+      <h2>Register</h2>
 
       <form onSubmit={submit} style={formStyle}>
+        <input
+          name="name"
+          placeholder="Name"
+          value={form.name}
+          onChange={handleChange}
+          required
+        />
         <input
           name="email"
           placeholder="Email"
@@ -47,7 +53,7 @@ export default function Login() {
           required
         />
 
-        <button type="submit">Login</button>
+        <button type="submit">Register</button>
       </form>
     </div>
   );

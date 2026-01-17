@@ -1,45 +1,67 @@
 import { Server } from "socket.io";
 
 let io;
-const users = {}; // socket.id -> { fileId, user }
+
+// workspaceId -> Map(socketId -> user)
+const presenceMap = new Map();
 
 export const initSocket = (server) => {
   io = new Server(server, {
-    cors: {
-      origin: "*"
-    }
+    cors: { origin: "*" },
   });
 
   io.on("connection", (socket) => {
+    /* ---------------- JOIN WORKSPACE ---------------- */
+    socket.on("join-workspace", ({ workspaceId, user }) => {
+      socket.join(workspaceId);
 
-    // User joins a file
-    socket.on("join-file", ({ fileId, user }) => {
-      socket.join(fileId);
-      users[socket.id] = { fileId, user };
-
-      socket.to(fileId).emit("user-joined", user);
-    });
-
-    // CRDT updates (real-time code sync)
-    socket.on("code-update", ({ fileId, update }) => {
-  socket.to(fileId).emit("code-update", update);
-});
-
-
-    // Typing indicator
-    socket.on("typing", () => {
-      const data = users[socket.id];
-      if (data) {
-        socket.to(data.fileId).emit("typing", data.user);
+      if (!presenceMap.has(workspaceId)) {
+        presenceMap.set(workspaceId, new Map());
       }
+
+      presenceMap.get(workspaceId).set(socket.id, {
+        socketId: socket.id,
+        user,
+        fileId: null,
+      });
+
+      io.to(workspaceId).emit(
+        "presence-update",
+        Array.from(presenceMap.get(workspaceId).values())
+      );
     });
 
-    // User disconnects
+    /* ---------------- JOIN FILE ---------------- */
+    socket.on("join-file", ({ workspaceId, fileId, user }) => {
+      socket.join(fileId);
+
+      const workspaceUsers = presenceMap.get(workspaceId);
+      if (workspaceUsers?.has(socket.id)) {
+        workspaceUsers.get(socket.id).fileId = fileId;
+      }
+
+      io.to(workspaceId).emit(
+        "presence-update",
+        Array.from(workspaceUsers.values())
+      );
+    });
+
+    /* ---------------- TYPING ---------------- */
+    socket.on("typing", ({ workspaceId, user }) => {
+      socket.to(workspaceId).emit("user-typing", user);
+    });
+
+    /* ---------------- DISCONNECT ---------------- */
     socket.on("disconnect", () => {
-      const data = users[socket.id];
-      if (data) {
-        socket.to(data.fileId).emit("user-left", data.user);
-        delete users[socket.id];
+      for (const [workspaceId, users] of presenceMap.entries()) {
+        if (users.has(socket.id)) {
+          users.delete(socket.id);
+
+          io.to(workspaceId).emit(
+            "presence-update",
+            Array.from(users.values())
+          );
+        }
       }
     });
   });
