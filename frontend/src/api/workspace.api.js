@@ -34,3 +34,9 @@ export const acceptInvite = (workspaceId, token) =>
     {},
     { headers: { Authorization: `Bearer ${token}` } }
   );
+
+/* ✅ Get workspace details (NEW) */
+export const getWorkspaceById = (workspaceId, token) =>
+  axios.get(`${BASE_URL}/api/workspaces/${workspaceId}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });

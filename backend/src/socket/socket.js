@@ -2,7 +2,7 @@ import { Server } from "socket.io";
 
 let io;
 
-// workspaceId -> Map(socketId -> user)
+// workspaceId -> Map(socketId -> { socketId, user, fileId })
 const presenceMap = new Map();
 
 export const initSocket = (server) => {
@@ -13,6 +13,8 @@ export const initSocket = (server) => {
   io.on("connection", (socket) => {
     /* ---------------- JOIN WORKSPACE ---------------- */
     socket.on("join-workspace", ({ workspaceId, user }) => {
+      if (!workspaceId) return;
+
       socket.join(workspaceId);
 
       if (!presenceMap.has(workspaceId)) {
@@ -32,23 +34,46 @@ export const initSocket = (server) => {
     });
 
     /* ---------------- JOIN FILE ---------------- */
-    socket.on("join-file", ({ workspaceId, fileId, user }) => {
+    socket.on("join-file", ({ workspaceId, fileId }) => {
+      if (!fileId) return;
+
       socket.join(fileId);
 
-      const workspaceUsers = presenceMap.get(workspaceId);
-      if (workspaceUsers?.has(socket.id)) {
-        workspaceUsers.get(socket.id).fileId = fileId;
-      }
+      // ✅ Presence update only if workspaceId provided
+      if (workspaceId && presenceMap.has(workspaceId)) {
+        const workspaceUsers = presenceMap.get(workspaceId);
 
-      io.to(workspaceId).emit(
-        "presence-update",
-        Array.from(workspaceUsers.values())
-      );
+        if (workspaceUsers?.has(socket.id)) {
+          workspaceUsers.get(socket.id).fileId = fileId;
+        }
+
+        io.to(workspaceId).emit(
+          "presence-update",
+          Array.from(workspaceUsers.values())
+        );
+      }
     });
 
-    /* ---------------- TYPING ---------------- */
-    socket.on("typing", ({ workspaceId, user }) => {
-      socket.to(workspaceId).emit("user-typing", user);
+    /* ---------------- LEAVE FILE ---------------- */
+    socket.on("leave-file", (fileId) => {
+      if (!fileId) return;
+      socket.leave(fileId);
+    });
+
+    /* ---------------- REAL TIME CODE UPDATES ✅ ---------------- */
+    socket.on("code-update", ({ fileId, update }) => {
+      if (!fileId || !update) return;
+
+      // send to others in file room
+      socket.to(fileId).emit("code-update", update);
+    });
+
+    /* ---------------- TYPING (FILE BASED ✅) ---------------- */
+    socket.on("typing", ({ fileId, user }) => {
+      if (!fileId || !user) return;
+
+      // same event name frontend listens to ✅
+      socket.to(fileId).emit("typing", user);
     });
 
     /* ---------------- DISCONNECT ---------------- */
@@ -61,6 +86,10 @@ export const initSocket = (server) => {
             "presence-update",
             Array.from(users.values())
           );
+
+          if (users.size === 0) {
+            presenceMap.delete(workspaceId);
+          }
         }
       }
     });
