@@ -1,0 +1,79 @@
+.heatmap-card {
+  background: linear-gradient(145deg, #0f2233, #0b1b28);
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.heatmap-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #9cc8e6;
+  margin-bottom: 16px;
+}
+
+.heatmap-empty {
+  color: #6c8ea3;
+  font-size: 13px;
+}
+
+/* TEAM RING */
+
+.team-ring {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-ring-inner {
+  width: 90px;
+  height: 90px;
+  background: #0b1b28;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #7dd3fc;
+  font-weight: 600;
+}
+
+.team-ring-inner span {
+  font-size: 11px;
+  color: #7aa6c2;
+}
+
+/* LEGEND */
+
+.team-legend {
+  margin-top: 16px;
+}
+
+.legend-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.legend-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  margin-right: 8px;
+}
+
+.legend-name {
+  flex: 1;
+  font-size: 13px;
+  color: #d6e7f3;
+}
+
+.legend-value {
+  font-size: 12px;
+  color: #9bd2ff;
+}

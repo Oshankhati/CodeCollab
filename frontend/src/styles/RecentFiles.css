@@ -1,0 +1,112 @@
+.rf-container {
+  width: 100%;
+  height: 100%;
+  padding: 8px 4px;
+}
+
+.rf-heading {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+/* ── Empty state ── */
+.rf-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  gap: 12px;
+  text-align: center;
+}
+
+.rf-empty-icon {
+  font-size: 2.5rem;
+  color: #4fc3f7;
+  margin-bottom: 8px;
+}
+
+.rf-empty p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.rf-empty-sub {
+  font-size: 0.85rem !important;
+  font-weight: 400 !important;
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+
+/* ── Activity list ── */
+.rf-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rf-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  transition: background 0.2s ease;
+  cursor: default;
+}
+
+.rf-row:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Avatar circle */
+.rf-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #0f1a2e;
+  flex-shrink: 0;
+}
+
+/* Row content */
+.rf-row-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.rf-row-main {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: baseline;
+}
+
+.rf-user {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.rf-verb {
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 400;
+}
+
+.rf-file {
+  font-weight: 600;
+}
+
+.rf-time {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.35);
+}

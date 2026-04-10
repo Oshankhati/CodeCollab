@@ -1,0 +1,172 @@
+.presence-container{
+  background:#0f2c39;
+  border-radius:10px;
+  padding:14px;
+
+  border:1px solid rgba(255,255,255,0.06);
+
+  backdrop-filter: blur(6px);
+}
+/* HEADER */
+.presence-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  font-weight: 600;
+}
+
+.presence-count {
+  background: rgba(255,255,255,0.2);
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+}
+
+/* LIST */
+.presence-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+/* USER */
+.presence-user{
+  display:flex;
+  align-items:center;
+  padding:8px 10px;
+  border-radius:8px;
+
+  transition:all 0.2s ease;
+
+  cursor:pointer;
+}
+
+/* Hover effect */
+.presence-user:hover{
+  background:rgba(255,255,255,0.06);
+  transform:translateX(3px);
+}
+
+/* Avatar */
+.presence-avatar{
+  width:34px;
+  height:34px;
+
+  border-radius:50%;
+  background:#3b82f6;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-weight:600;
+  margin-right:10px;
+
+  transition:all 0.2s ease;
+}
+
+/* Avatar glow on hover */
+.presence-user:hover .presence-avatar{
+  box-shadow:0 0 8px rgba(59,130,246,0.7);
+}
+
+/* User info */
+.presence-info{
+  display:flex;
+  flex-direction:column;
+}
+
+.presence-name{
+  font-size:13px;
+  font-weight:500;
+}
+
+.presence-status{
+  font-size:11px;
+  opacity:0.7;
+}
+
+/* Online indicator */
+.presence-dot{
+  margin-left:auto;
+
+  width:8px;
+  height:8px;
+
+  border-radius:50%;
+}
+
+.presence-dot.online{
+  background:#22c55e;
+}
+
+.presence-dot.editing{
+  background:#f59e0b;
+}
+
+/* TYPING */
+.presence-typing {
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #7dd3fc;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+
+
+.presence-heatmap{
+  margin-top:12px;
+  border-top:1px solid rgba(255,255,255,0.08);
+  padding-top:10px;
+}
+
+.presence-subtitle{
+  font-size:12px;
+  font-weight:600;
+  margin-bottom:8px;
+  color:#cbd5f5;
+}
+
+.presence-contrib-row{
+  display:flex;
+  align-items:center;
+  margin-bottom:6px;
+}
+
+.presence-contrib-name{
+  width:60px;
+  font-size:12px;
+}
+
+.presence-bar-bg{
+  flex:1;
+  height:6px;
+  background:#1e293b;
+  border-radius:4px;
+  margin:0 8px;
+}
+
+.presence-bar{
+  height:6px;
+  background:#22c55e;
+  border-radius:4px;
+}
+
+.presence-contrib-count{
+  font-size:11px;
+  color:#94a3b8;
+}
+
+.presence-heatmap{
+  margin-bottom:12px;
+  padding-bottom:10px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.presence-list{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}

@@ -1,0 +1,204 @@
+.workspace-container {
+  min-height: 100vh;
+  background: linear-gradient(
+    215deg,
+    #0093b4 -46.09%,
+    #18152c 50.24%
+  );
+  color: white;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+.workspace-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.workspace-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.workspace-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.workspace-actions button {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: rgba(255,255,255,0.2);
+  color: white;
+}
+
+.workspace-actions button.primary {
+  background: #ffffff;
+  color: #18152c;
+  font-weight: 600;
+}
+
+.workspace-actions button:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+.member-label {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* BODY */
+.workspace-body {
+  flex: 1;
+  display: grid;
+
+  /* ⭐ Updated layout widths */
+  grid-template-columns: 280px 1fr 340px;
+}
+
+/* LEFT SIDEBAR */
+.workspace-sidebar {
+  background: rgba(0,0,0,0.25);
+  border-right: 1px solid rgba(255,255,255,0.1);
+  overflow-y: auto;
+}
+
+/* RIGHT SIDEBAR (Presence Panel) */
+.workspace-presence{
+  background:rgba(0,0,0,0.25);
+  border-left:1px solid rgba(255,255,255,0.1);
+
+  padding:16px;
+
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+
+  overflow-y:auto;
+
+  /* remove shadow */
+  box-shadow:none;
+}
+
+/* MAIN CONTENT */
+.workspace-main {
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.workspace-empty {
+  opacity: 0.6;
+  font-size: 1.1rem;
+}
+
+/* Explain Card */
+.explain-card {
+  background: rgba(20,18,61,0.75);
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 800px;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.explain-card h2,
+.explain-card h3 {
+  color: #4fc3f7;
+}
+
+.explain-card ul {
+  margin-left: 20px;
+}
+
+/* EMPTY STATE */
+.workspace-empty-state {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-card {
+  max-width: 420px;
+  text-align: center;
+  padding: 36px 28px;
+  border-radius: 20px;
+  background: rgba(20,18,61,0.75);
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+}
+
+.empty-icon {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: #4fc3f7;
+}
+
+.empty-card h2 {
+  margin: 8px 0;
+  font-size: 1.6rem;
+}
+
+.empty-card p {
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+.empty-actions {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.empty-actions button {
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  background: #4fc3f7;
+  color: #0f172a;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.empty-actions button:hover {
+  background: #38bdf8;
+}
+
+.empty-hint {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+
+  .workspace-body {
+    grid-template-columns: 220px 1fr;
+  }
+
+  .workspace-presence {
+    display: none;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .workspace-body {
+    grid-template-columns: 1fr;
+  }
+
+  .workspace-sidebar {
+    display: none;
+  }
+
+}

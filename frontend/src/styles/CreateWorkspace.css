@@ -1,0 +1,150 @@
+.create-workspace-page {
+  min-height: 100vh;
+  padding: 2rem;
+  /* background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364); */
+  color: white;
+  
+}
+.workspaceHeading {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.header .back-btn {
+  background: #1a1a2e;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 2rem;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+}
+
+.form-container h1 {
+  margin-bottom: 0.5rem;
+}
+
+.form-container input,
+.form-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 4px;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #ffffff15;
+  color: white;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.visibility-options {
+  margin: 1rem 0;
+}
+
+.visibility-options label {
+  display: block;
+  border: #4fc3f7 1px solid;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+
+.visibility-options input {
+  margin-right: 0.5rem;
+}
+.visibility-option {
+  display: block;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  cursor: pointer;
+  vertical-align: top;
+}
+
+.visibility-option input[type="radio"] {
+  vertical-align: top;
+  margin-top: 3px;
+  margin-right: 10px;
+  float: left;
+}
+
+.option-content {
+  display: inline-block;
+  max-width: calc(100% - 30px);
+}
+
+.option-content span {
+  font-weight: bold;
+  display: block;
+}
+
+.option-content p {
+  margin: 2px 0 0;
+  font-size: 0.875rem;
+  color: #aaa;
+}
+.visibility-options label {
+  display: flex;
+  align-items: flex-start; /* Aligns radio button with the first line of text */
+  gap: 10px;               /* Space between radio and text */
+  margin-bottom: 15px;     /* Space between the two options */
+  cursor: pointer;
+}
+
+.visibility-options input[type="radio"] {
+  margin-top: 5px;         /* Fine-tune vertical alignment with the emoji/title */
+  width: auto;             /* Prevents radio from stretching if you have global input styles */
+}
+
+.visibility-options div {
+  display: flex;
+  flex-direction: column;  /* Keeps the <span> and <p> stacked vertically */
+}
+
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.cancel-btn,
+.create-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+}
+
+.create-btn {
+  background: #4fc3f7;
+  color: black;
+}
+
+.help-link {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  text-align: center;
+}

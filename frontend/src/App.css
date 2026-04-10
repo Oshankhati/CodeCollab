@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  margin: 0;
+  background-color: #18152C;
+  font-family: "Inter", sans-serif;
+}
+
+.App {
+  min-height: 100vh;
+  position: relative;
+  color: #e2e8f0;
+
+  background:
+    /* Grid pattern */
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+
+    /* Cyan glow */
+    radial-gradient(
+      90% 100% at 100% 0%,
+      #0093B4 0%,
+      #18152C 70%
+    ),
+
+    /* Main dark gradient */
+    linear-gradient(
+      180deg,
+      #020617 0%,
+      #0f172a 100%
+    );
+
+  background-size:
+    60px 60px,
+    60px 60px,
+    cover,
+    cover;
+
+  background-attachment: fixed;
+
+  z-index: 0;
+}
+
+/* Faint corner lines (non-repeating) */
+/* .App::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+   background-image: url("../glow-line.png"), url("/glow-line.png");
+  background-repeat: no-repeat, no-repeat;
+  background-position: top left, bottom right;
+  background-size: 250px, 250px;
+
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 1;
+} */
+.glow-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.45;
+
+  background-image: 
+    url("./assets/icons/glow-line.png"),
+    url("./assets/icons/glow-line.png"),
+    url("./assets/icons/glow-line.png"),
+    url("./assets/icons/glow-line.png");
+
+  background-repeat: no-repeat;
+  background-position: 
+    top left,
+    top right,
+    bottom left,
+    bottom right;
+
+  background-size: 280px;
+}
+
+
+
+

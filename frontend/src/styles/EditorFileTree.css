@@ -1,0 +1,159 @@
+.eft-root {
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #21262d transparent;
+  padding-bottom: 60px;
+  background: #161b22;
+}
+
+.eft-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 10px 8px;
+  position: sticky;
+  top: 0;
+  background: #161b22;
+  z-index: 2;
+  border-bottom: 1px solid #21262d;
+}
+
+.eft-header-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #7d8590;
+  letter-spacing: 0.1em;
+}
+
+.eft-header-btns {
+  display: flex;
+  gap: 3px;
+}
+
+.eft-header-btns button {
+  background: transparent;
+  border: 1px solid #30363d;
+  color: #7d8590;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.68rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+.eft-header-btns button:hover {
+  background: rgba(255,255,255,0.08);
+  color: #e6edf3;
+  border-color: #58a6ff;
+}
+
+/* Row */
+.eft-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 6px 4px 0;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 1px 4px;
+  font-size: 0.82rem;
+  color: #c9d1d9;
+  user-select: none;
+  transition: background 0.1s;
+  min-height: 28px;
+}
+.eft-row:hover { background: rgba(255,255,255,0.06); }
+.eft-row:hover .eft-actions { opacity: 1; }
+.eft-row-active {
+  background: rgba(79,195,247,0.12) !important;
+  color: #4fc3f7 !important;
+}
+.eft-dragging { opacity: 0.35; }
+.eft-drop-over {
+  background: rgba(79,195,247,0.15) !important;
+  outline: 1px dashed rgba(79,195,247,0.5);
+  border-radius: 4px;
+}
+
+.eft-toggle {
+  font-size: 0.65rem;
+  color: #7d8590;
+  width: 12px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.eft-icon { font-size: 0.82rem; flex-shrink: 0; }
+
+.eft-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.82rem;
+}
+
+/* Inline action buttons (show on hover) */
+.eft-actions {
+  display: flex;
+  gap: 2px;
+  opacity: 0;
+  transition: opacity 0.15s;
+  flex-shrink: 0;
+  padding-right: 4px;
+}
+
+.eft-actions button {
+  background: transparent;
+  border: none;
+  color: #7d8590;
+  padding: 1px 4px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.7rem;
+  transition: all 0.12s;
+}
+.eft-actions button:hover {
+  background: rgba(255,255,255,0.1);
+  color: #e6edf3;
+}
+.eft-actions button.eft-del:hover {
+  color: #ff6b6b;
+  background: rgba(255,107,107,0.1);
+}
+
+/* Inline input */
+.eft-input {
+  flex: 1;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid #58a6ff;
+  border-radius: 4px;
+  color: #e6edf3;
+  font-size: 0.82rem;
+  padding: 2px 6px;
+  outline: none;
+  min-width: 0;
+  width: 100%;
+}
+
+/* Create row */
+.eft-create-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px;
+  font-size: 0.82rem;
+}
+
+/* Empty */
+.eft-empty {
+  font-size: 0.78rem;
+  color: #7d8590;
+  text-align: center;
+  padding: 24px 12px;
+  line-height: 1.6;
+}

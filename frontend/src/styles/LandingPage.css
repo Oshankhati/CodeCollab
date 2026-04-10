@@ -1,0 +1,115 @@
+/* ✅ ONLY landing page styles (NO GLOBAL CONFLICTS) */
+
+.landing-page {
+  min-height: 100vh;
+  position: relative;
+  color: #e2e8f0;
+  font-family: "Inter", sans-serif;
+
+  background:
+    /* Grid pattern */
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+
+    /* Cyan glow */
+    radial-gradient(
+      90% 100% at 100% 0%,
+      #0093B4 0%,
+      #18152C 70%
+    ),
+
+    /* Main dark gradient */
+    linear-gradient(
+      180deg,
+      #020617 0%,
+      #0f172a 100%
+    );
+
+  background-size:
+    60px 60px,
+    60px 60px,
+    cover,
+    cover;
+
+  background-attachment: fixed;
+  overflow-x: hidden;
+  z-index: 0;
+}
+
+/* 🌟 Glow Overlay (corners) */
+.landing-page .glow-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.45;
+
+  background-image: 
+    url("../assets/icons/glow-line.png"),
+    url("../assets/icons/glow-line.png"),
+    url("../assets/icons/glow-line.png"),
+    url("../assets/icons/glow-line.png");
+
+  background-repeat: no-repeat;
+  background-position: 
+    top left,
+    top right,
+    bottom left,
+    bottom right;
+
+  background-size: 280px;
+}
+
+/* 🔵 Animated Glow Blobs */
+.landing-page .blob {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.4;
+  z-index: 0;
+}
+
+.landing-page .blob1 {
+  top: -100px;
+  left: -100px;
+  background: #00e5ff;
+  animation: floatBlob1 12s infinite alternate ease-in-out;
+}
+
+.landing-page .blob2 {
+  bottom: -120px;
+  right: -120px;
+  background: #7c3aed;
+  animation: floatBlob2 14s infinite alternate ease-in-out;
+}
+
+@keyframes floatBlob1 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(100px, 80px) scale(1.2); }
+}
+
+@keyframes floatBlob2 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-80px, -60px) scale(1.3); }
+}
+
+/* ✨ Smooth section spacing */
+.landing-page section {
+  position: relative;
+  z-index: 2;
+  padding: 80px 0;
+}
+
+/* 🔥 Optional: Fade-in animation support */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+.fade-in-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
