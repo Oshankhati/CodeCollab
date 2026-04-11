@@ -1,5 +1,4 @@
 
-
 import { useEffect, useState } from "react";
 import { socket } from "../sockets/socket";
 import { getHeatmap } from "../api/analytics.api";
